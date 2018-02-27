@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.9.1-beta" author="Altamiro Rodrigues" last-position="0,0" last-zoom="0.85"
+	 default-schema="public" default-owner="postgres">
+<database name="db_estudo">
+	<comment><![CDATA[Banco de Dados de Estudo SQL com base em tabelas do IBGE]]></comment>
+</database>
+
+<schema name="public" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<table name="regiao">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="400" y="280"/>
+	<column name="id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="no_regiao" not-null="true">
+		<type name="varchar" length="15"/>
+	</column>
+	<column name="dt_cadastro" not-null="true" default-value="NOW()">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<constraint name="regiao_id_pk" type="pk-constr" table="public.regiao">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<initial-data>
+<![CDATA[id•no_regiao⸣
+1•Norte⸣
+2•Nordeste⸣
+3•Centro-Oeste⸣
+4•Sudeste⸣
+5•Sul]]>
+	</initial-data>
+</table>
+
+<index name="regiao_id_idx" table="public.regiao"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="id"/>
+		</idxelement>
+</index>
+
+<index name="regiao_no_regiao_idx" table="public.regiao"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="no_regiao"/>
+		</idxelement>
+</index>
+
+<index name="regiao_dt_cadastro_idx" table="public.regiao"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="dt_cadastro"/>
+		</idxelement>
+</index>
+
+<table name="uf">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="820" y="280"/>
+	<column name="id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="regiao_id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="no_uf" not-null="true">
+		<type name="varchar" length="50"/>
+	</column>
+	<column name="sg_uf" not-null="true">
+		<type name="char" length="2"/>
+	</column>
+	<column name="dt_cadastro" not-null="true" default-value="NOW()">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<constraint name="uf_id_pk" type="pk-constr" table="public.uf">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<initial-data>
+<![CDATA[id•regiao_id•no_uf•sg_uf⸣
+12•1•Acre•AC⸣
+16•1•Amapá•AP⸣
+13•1•Amazonas•AM⸣
+15•1•Pará•PA⸣
+11•1•Rondônia•RO⸣
+14•1•Roraima•RR⸣
+17•1•Tocantins•TO⸣
+27•2•Alagoas•AL⸣
+29•2•Bahia•BA⸣
+23•2•Ceará•CE⸣
+21•2•Maranhão•MA⸣
+25•2•Paraíba•PB⸣
+26•2•Pernambuco•PE⸣
+22•2•Piauí•PI⸣
+24•2•Rio Grande do Norte•RN⸣
+28•2•Sergipe•SE⸣
+53•3•Distrito Federal•DF⸣
+52•3•Goiás•GO⸣
+51•3•Mato Grosso•MT⸣
+50•3•Mato Grosso do Sul•MS⸣
+32•4•Espírito Santo•ES⸣
+31•4•Minas Gerais•MG⸣
+33•4•Rio de Janeiro•RJ⸣
+35•4•São Paulo•SP⸣
+41•5•Paraná•PR⸣
+43•5•Rio Grande do Sul•RS⸣
+42•5•Santa Catarina•SC]]>
+	</initial-data>
+</table>
+
+<index name="uf_id_idx" table="public.uf"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="id"/>
+		</idxelement>
+</index>
+
+<index name="uf_regiao_id_idx" table="public.uf"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="regiao_id"/>
+		</idxelement>
+</index>
+
+<index name="uf_no_uf_idx" table="public.uf"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="no_uf"/>
+		</idxelement>
+</index>
+
+<index name="uf_sg_uf_idx" table="public.uf"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="sg_uf"/>
+		</idxelement>
+</index>
+
+<index name="uf_dt_cadastro_idx" table="public.uf"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="dt_cadastro"/>
+		</idxelement>
+</index>
+
+<table name="municipio">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1260" y="280"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="uf_id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="no_municipio" not-null="true">
+		<type name="varchar" length="150"/>
+	</column>
+	<column name="nu_geocodigo" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="dt_cadastro" not-null="true" default-value="NOW()">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<constraint name="municipio_id_pk" type="pk-constr" table="public.municipio">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="municipio_id_idx" table="public.municipio"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="id"/>
+		</idxelement>
+</index>
+
+<index name="municipio_uf_id_idx" table="public.municipio"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="uf_id"/>
+		</idxelement>
+</index>
+
+<index name="municipio_no_municipio_idx" table="public.municipio"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="no_municipio"/>
+		</idxelement>
+</index>
+
+<index name="municipio_nu_geocodigo_idx" table="public.municipio"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="nu_geocodigo"/>
+		</idxelement>
+</index>
+
+<index name="municipio_dt_cadastro_idx" table="public.municipio"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="dt_cadastro"/>
+		</idxelement>
+</index>
+
+<table name="uf_estimativa_populacao">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="280" y="580"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="uf_id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="nu_ano" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="nu_populacao" not-null="true">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="dt_cadastro" not-null="true" default-value="NOW()">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<constraint name="uf_estimativa_populacao_id_pk" type="pk-constr" table="public.uf_estimativa_populacao">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="uf_estimativa_populacao_id_idx" table="public.uf_estimativa_populacao"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="id"/>
+		</idxelement>
+</index>
+
+<index name="uf_estimativa_populacao_uf_id_idx" table="public.uf_estimativa_populacao"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="uf_id"/>
+		</idxelement>
+</index>
+
+<index name="uf_estimativa_populacao_nu_ano_idx" table="public.uf_estimativa_populacao"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="nu_ano"/>
+		</idxelement>
+</index>
+
+<index name="uf_estimativa_populacao_nu_populacao_idx" table="public.uf_estimativa_populacao"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="nu_populacao"/>
+		</idxelement>
+</index>
+
+<index name="uf_estimativa_populacao_dt_cadastro_idx" table="public.uf_estimativa_populacao"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="dt_cadastro"/>
+		</idxelement>
+</index>
+
+<table name="municipio_estimativa_populacao">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="780" y="620"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="municipio_id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="nu_ano" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="nu_populacao" not-null="true">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="dt_cadastro" not-null="true" default-value="NOW()">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<constraint name="municipio_estimativa_populacao_id_pk" type="pk-constr" table="public.municipio_estimativa_populacao">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="municipio_estimativa_populacao_id_idx" table="public.municipio_estimativa_populacao"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="id"/>
+		</idxelement>
+</index>
+
+<index name="municipio_estimativa_populacao_municipio_id_idx" table="public.municipio_estimativa_populacao"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="municipio_id"/>
+		</idxelement>
+</index>
+
+<index name="municipio_estimativa_populacao_nu_ano_idx" table="public.municipio_estimativa_populacao"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="nu_ano"/>
+		</idxelement>
+</index>
+
+<index name="municipio_estimativa_populacao_nu_populacao_idx" table="public.municipio_estimativa_populacao"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="nu_populacao"/>
+		</idxelement>
+</index>
+
+<index name="municipio_estimativa_populacao_dt_cadastro_idx" table="public.municipio_estimativa_populacao"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="dt_cadastro"/>
+		</idxelement>
+</index>
+
+<constraint name="uf_regiao_id_pk" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.regiao" table="public.uf">
+	<columns names="regiao_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="municipio_uf_id_fk" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.uf" table="public.municipio">
+	<columns names="uf_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="uf_estimativa_populacao_uf_id_fk" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.uf" table="public.uf_estimativa_populacao">
+	<columns names="uf_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="municipio_estimativa_populacao_municipio_id_fk" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.municipio" table="public.municipio_estimativa_populacao">
+	<columns names="municipio_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<relationship name="relacionamento_uf_regiao" type="relfk"
+	 src-table="public.uf"
+	 dst-table="public.regiao"
+	 src-required="false" dst-required="false">
+	<label ref-type="src-label">
+		<position x="0.0925" y="19.725"/>
+	</label>
+	<label ref-type="name-label">
+		<position x="-16.5189" y="-75.6016"/>
+	</label>
+</relationship>
+
+<relationship name="relacionamento_municipio_uf" type="relfk"
+	 src-table="public.municipio"
+	 dst-table="public.uf"
+	 src-required="false" dst-required="false">
+	<label ref-type="name-label">
+		<position x="14.4264" y="-55.6016"/>
+	</label>
+</relationship>
+
+<relationship name="relacionamento_uf_estimativa_populacao_uf" type="relfk"
+	 src-table="public.uf_estimativa_populacao"
+	 dst-table="public.uf"
+	 src-required="false" dst-required="false">
+	<label ref-type="name-label">
+		<position x="-90.472" y="14.3984"/>
+	</label>
+</relationship>
+
+<relationship name="relacionamento_municipio_estimativa_populacao_municipio" type="relfk"
+	 src-table="public.municipio_estimativa_populacao"
+	 dst-table="public.municipio"
+	 src-required="false" dst-required="false">
+	<label ref-type="name-label">
+		<position x="27.4967" y="54.3984"/>
+	</label>
+</relationship>
+
+</dbmodel>
